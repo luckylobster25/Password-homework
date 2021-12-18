@@ -1,43 +1,40 @@
-// Assignment Code
+// the variable generateBtn is connecting to the id generate in html.
 var generateBtn = document.querySelector("#generate");
-var legthOfPass = prompt("How long shall your password be?")
-var charSpecialInclude = prompt("Do you want to include special character?");
-var CharNumInclude = prompt("Do you want to include number?");
-
-var charSpecialNum  = "0123456789abcdefghijklmnopqrstuvwxyz!@#$%^&*()?ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var charNum = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var charSpecial = "abcdefghijklmnopqrstuvwxyz!@#$%^&*()?ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var charOnly = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
-if (CharNumInclude == "yes" && charSpecialInclude == "yes") {
-    passChoice = charSpecialNum;
-}else if (charSpecialInclude == "yes" && CharNumInclude == "no" ) {
-    passChoice = charSpecial;
-}else if (charSpecialInclude == "no" && CharNumInclude == "yes" ) {
-    passChoice = charNum;
-} else {
-    passChoice = charOnly;
+var passwordLength = prompt("Type in the length of your password, at least 8 character.")
+if (passwordLength < 8) {
+    alert("Password must be at least 8 characters");
+    passwordLength = prompt("Type in the length of your password, at least 8 character.");
 }
-password = ""
-// function generatePassword() {
-    var passLength = legthOfPass
-    for (var i = 0; i <= passLength; i ++){
-        var randoMize = Math.floor(Math.random()*passChoice);
-        password += passChoice.substring(randoMize, randoMize +1);
-    }
-    console.log(password)
-// }
-// generatePassword()
-
-// // Write password to the #password input
+var passwordNumExclude = prompt("Do you want number to be included?")
+var startFrom = 33
+var randomRange = 92
+// Write password to the #password input
+//given the code, generatePassword is not yet define. 
 // function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-//   // This line is targeting what
 
-//   passwordText.value = password;
+if (passwordNumExclude == "no") {
+    startFrom = 58;
+    randomRange = 64;
+}
 
-// }
+function makePassword() {
+    return String.fromCharCode(Math.floor(Math.random() * randomRange) + startFrom);
+  }
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+function generatePassword(passwordLength) {
+    var password = '';
+    for (var i = 0; i < passwordLength; i++) {
+    password += makePassword();
+    }
+    return password;
+}
+
+// Add event listener to generate button
+//the first thing the computer going to read is this eventlistener. 
+//Whenever the button is clicked it will execute the function writePassword. 
+
+generateBtn.addEventListener("click", function(){
+    password = generatePassword(passwordLength);
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password;
+});
