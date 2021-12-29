@@ -19,3 +19,5 @@ User then will receive a second prompt that look lik this. [prompt-2](img\prompt
 After everything is filled out correctly, this is how it should look like. [pass-generator-blink](img\pass-generator blink.png).
 
 When the "Generate Passowrd" button is clicked, this is how it should look like. [pass-generator-password](img\pass-generator .png).
+
+This link will take user to github repo page [go to repo page](https://luckylobster25.github.io/Password-homework/). When open page, user must refresh page. 
