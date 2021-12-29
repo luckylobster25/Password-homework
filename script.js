@@ -2,8 +2,9 @@
 var generateBtn = document.querySelector("#generate");
 // This variable target n connected to the html button.
 // when application is open, this prompt is the first to pop up. 
+var passwordLength = ''
 function retry(){
-    var passwordLength = prompt("Type in the length of your password, at least 8 character.")
+    passwordLength = prompt("Type in the length of your password, at least 8 character.")
     if (passwordLength < 8 || passwordLength === "") {
     alert("Password must be at least 8 characters");
     retry();
@@ -11,7 +12,7 @@ function retry(){
 }}
 retry(); 
 // having the prompt inside a function, user cannot move on if requirement is not met.
-var passwordNumExclude = prompt("Do you want number to be included?")
+var passwordNumExclude = prompt("Do you want number to be included? yes/no")
 // this prompt is asking if number should be included or not.
 var startFrom = 33
 var randomRange = 92
